@@ -1,0 +1,18 @@
+{
+  "name": "the-actual-news",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Verifiable news ledger platform — news as a public service",
+  "license": "AGPL-3.0-only",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r --parallel dev",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  }
+}
