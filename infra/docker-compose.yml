@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: news
+      POSTGRES_PASSWORD: news
+      POSTGRES_DB: news_ledger
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+
+  prism-gateway:
+    image: stoplight/prism:5
+    command: ["mock", "-h", "0.0.0.0", "/contracts/openapi/gateway.openapi.yaml"]
+    volumes:
+      - ../contracts:/contracts:ro
+    ports:
+      - "${GATEWAY_PORT:-8080}:4010"
+
+  prism-story:
+    image: stoplight/prism:5
+    command: ["mock", "-h", "0.0.0.0", "/contracts/openapi/story.openapi.yaml"]
+    volumes:
+      - ../contracts:/contracts:ro
+    ports:
+      - "${STORY_PORT:-8081}:4010"
+
+  prism-claim:
+    image: stoplight/prism:5
+    command: ["mock", "-h", "0.0.0.0", "/contracts/openapi/claim.openapi.yaml"]
+    volumes:
+      - ../contracts:/contracts:ro
+    ports:
+      - "${CLAIM_PORT:-8082}:4010"
+
+  prism-evidence:
+    image: stoplight/prism:5
+    command: ["mock", "-h", "0.0.0.0", "/contracts/openapi/evidence.openapi.yaml"]
+    volumes:
+      - ../contracts:/contracts:ro
+    ports:
+      - "${EVIDENCE_PORT:-8083}:4010"
+
+  prism-verify:
+    image: stoplight/prism:5
+    command: ["mock", "-h", "0.0.0.0", "/contracts/openapi/verify.openapi.yaml"]
+    volumes:
+      - ../contracts:/contracts:ro
+    ports:
+      - "${VERIFY_PORT:-8084}:4010"

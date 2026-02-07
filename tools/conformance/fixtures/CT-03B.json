@@ -1,0 +1,59 @@
+{
+  "fixture_id": "CT-03B",
+  "policy_pack": {
+    "policy_pack_version": "v1.0.0",
+    "publish_gates": {
+      "min_primary_evidence_ratio": 0.6,
+      "max_unsupported_claim_share": 0.1,
+      "max_contradicted_claims": 0,
+      "require_high_impact_corroboration": false,
+      "high_impact_min_independent_sources": 2
+    },
+    "evidence": {
+      "primary_source_classes": ["primary_record", "primary_media", "primary_dataset"],
+      "independence_key_fields": ["source", "publisher", "url", "blob_uri"]
+    },
+    "claim": {
+      "high_impact_claim_types": ["statistical"],
+      "high_impact_regexes": ["(\\$|usd|million|billion|percent|%)"]
+    }
+  },
+  "request": {
+    "platform_id": "plf_local_01",
+    "story_id": "01JCT03A00000000000000001",
+    "story_version_id": "01JCT03AV0000000000000001"
+  },
+  "ledger": {
+    "stories": [
+      { "story_id": "01JCT03A00000000000000001", "platform_id": "plf_local_01", "title": "CT-03A story", "state": "review", "created_at": "2026-01-03T00:00:00Z", "updated_at": "2026-01-03T00:00:00Z" }
+    ],
+    "story_versions": [
+      { "story_version_id": "01JCT03AV0000000000000001", "story_id": "01JCT03A00000000000000001", "body_markdown": "One primary, one secondary.", "disclosure_markdown": null, "created_at": "2026-01-03T00:00:00Z" }
+    ],
+    "claims": [
+      { "claim_id": "01JCT03AC0000000000000001", "story_id": "01JCT03A00000000000000001", "story_version_id": "01JCT03AV0000000000000001", "claim_type": "factual", "text": "Primary-supported claim.", "support_status": "supported", "created_at": "2026-01-03T00:00:00Z" },
+      { "claim_id": "01JCT03AC0000000000000002", "story_id": "01JCT03A00000000000000001", "story_version_id": "01JCT03AV0000000000000001", "claim_type": "factual", "text": "Supported only by secondary evidence.", "support_status": "supported", "created_at": "2026-01-03T00:00:00Z" }
+    ],
+    "evidence_objects": [
+      { "evidence_id_hash": "sha256:ct03a1", "platform_id": "plf_local_01", "blob_uri": "s3://evidence/ct03a/primary.pdf", "media_type": "application/pdf", "provenance": { "source_class": "primary_record", "source": "city_clerk", "collected_at": "2026-01-03T00:00:00Z" }, "created_at": "2026-01-03T00:00:00Z" },
+      { "evidence_id_hash": "sha256:ct03a2", "platform_id": "plf_local_01", "blob_uri": "s3://evidence/ct03a/secondary.html", "media_type": "text/html", "provenance": { "source_class": "secondary", "source": "blog", "collected_at": "2026-01-03T00:00:00Z" }, "created_at": "2026-01-03T00:00:00Z" }
+    ],
+    "claim_evidence_edges": [
+      { "edge_id": "01JCT03AE0000000000000001", "claim_id": "01JCT03AC0000000000000001", "evidence_id_hash": "sha256:ct03a1", "relation": "supports", "strength": 0.9, "created_at": "2026-01-03T00:00:00Z" },
+      { "edge_id": "01JCT03AE0000000000000002", "claim_id": "01JCT03AC0000000000000002", "evidence_id_hash": "sha256:ct03a2", "relation": "supports", "strength": 0.7, "created_at": "2026-01-03T00:00:00Z" }
+    ],
+    "corrections": []
+  },
+  "expected": {
+    "total_claims": 2,
+    "unsupported_claims": 0,
+    "contradicted_claims": 0,
+    "primary_supported_claims": 1,
+    "primary_evidence_ratio": 0.5,
+    "unsupported_claim_share": 0.0,
+    "high_impact_claims": 0,
+    "high_impact_corroborated": 0,
+    "corroboration_ok": true,
+    "publish_gate_pass": false
+  }
+}
