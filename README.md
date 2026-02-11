@@ -488,7 +488,7 @@ The Actual News is part of **ORGAN-III (Ergon)** — the Commerce organ of the [
 
 ### Upstream Dependencies
 
-- **ORGAN-I (Theoria)** — Epistemological and ontological foundations. The verification spine's three-layer model (narrative, claims, evidence) draws on ORGAN-I's work on recursive knowledge structures and truth-claim formalization. The [`recursive-engine`](https://github.com/organvm-i-theoria/recursive-engine) project's approach to self-referential systems informs how claims can reference and supersede each other.
+- **ORGAN-I (Theoria)** — Epistemological and ontological foundations. The verification spine's three-layer model (narrative, claims, evidence) draws on ORGAN-I's work on recursive knowledge structures and truth-claim formalization. The [`recursive-engine`](https://github.com/organvm-i-theoria/recursive-engine--generative-entity) project's approach to self-referential systems informs how claims can reference and supersede each other.
 
 ### Lateral Connections
 
