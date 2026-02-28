@@ -33,3 +33,9 @@ coverage/
 
 # Docker
 postgres-data/
+
+# Next.js generated
+apps/public-web/next-env.d.ts
+
+# Netlify
+.netlify
